@@ -2,15 +2,45 @@
    box-sizing: border-box;
 }
 
-body {
+:root {
+   --clr-lightgrey: hsl(210, 31%, 80%);
+   --clr-grey: hsl(209, 34%, 30%);
+   --clr-white: #fff;
+   --clr-black: #222;
+   --ff-primary: "Roboto", sans-serif;
+   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+ }
+
+ body {
    margin: 0;
-   background: linear-gradient(to right, #94B3FD, #99FEFF);
+   font-family: var(--ff-primary);
+   background: var(--background-color);
+   color: var(--text-color);
+   font-weight: var(--font-weight);
+   transition: background 1s ease-in-out;
+ }
+
+ body.light {
+   --background-color: linear-gradient(to right, #D7E9F7, #F3F1F5);
+   --font-weight: 400;
+   --text-color: var(--clr-white);
+   --main-bg-color: var(--clr-grey);
+   --contrast-color: var(--clr-lightgrey);
+}
+
+body.dark {
+   --background-color: linear-gradient(to right, #082032, #2C394B);
+   --font-weight: 400;
+   --text-color: var(--clr-black);
+   --main-bg-color: var(--clr-lightgrey);
+   --contrast-color: var(--clr-white);
 }
 
 .calculator-grid {
    display: grid;
    justify-content: center;
    margin-top: 2rem;
+   margin-bottom: 1rem;
    grid-template-columns: repeat(4, 6rem);
    grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
 }
@@ -18,9 +48,10 @@ body {
 .calculator-grid > button {
    cursor: pointer;
    font-size: 2rem;
-   border: 1px solid #fff;
+   border: 1px solid var(--contrast-color);
    outline: none;
    background-color: rgba(255, 255, 255, .75);
+   margin: 0;
 }
 
 .calculator-grid > button:hover, 
@@ -53,3 +84,17 @@ body {
    color: #fff;
    font-size: 2.5rem;
 }
+
+nav {
+   background: var(--main-bg-color);
+   height: 3.5rem;
+   box-shadow: var(--dark-shadow);
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+ }
+
+h4 {
+   font: var(--ff-primary);
+   color: var(--text-color);
+ }
